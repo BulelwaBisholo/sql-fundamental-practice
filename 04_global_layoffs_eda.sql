@@ -2,6 +2,8 @@
 -- Author: Bulelwa Bisholo
 -- Description: This project explores trends in global layoffs, identifying key companies,
 -- industries, and patterns in workforce reductions.
+-- DATE: March 2026
+-- TOOLS: MySQL, CTEs, Window Functions, Case Statements
 
 SELECT company, location, industry, total_laid_off, percentage_laid_off
 FROM layoffs_staging2;
