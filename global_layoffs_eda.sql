@@ -6,11 +6,11 @@
 SELECT company, location, industry, total_laid_off, percentage_laid_off
 FROM layoffs_staging2;
 
--- Question 1. How big is the problem?
+-- Question 1a. What is the total number of layoffs recorded?
 SELECT SUM(total_laid_off)
 FROM layoffs_staging2;
 
-
+-- Question 1b. What is the largest single layoff event and highest layoff percentage recorded?
 SELECT MAX(total_laid_off), MAX(percentage_laid_off)
 FROM layoffs_staging2;
 
@@ -33,9 +33,9 @@ ORDER BY total_laid_off DESC;
 -- indicating complete shutdowns or severe operational failures,
 -- particularly among smaller or highly vulnerable organizations.
 
--- Question 2b: Which 'highly funded' companies still failed completely?
--- Goal: Identify well-funded organizations that reached 100% layoffs, 
--- suggesting that high capital does not always guarantee survival.
+-- Question 2b: Which funded companies still ended in complete layoffs?
+-- Goal: Identify organizations with recorded funding that still reached 100% layoffs,
+-- showing that funding alone did not guarantee survival.
 
 SELECT 
     company, 
@@ -48,10 +48,9 @@ WHERE percentage_laid_off = 1
   AND funds_raised_millions IS NOT NULL  -- Added to focus on funded companies
 ORDER BY funds_raised_millions DESC;
 
--- Insight: 
--- Even companies with significant venture backing (high funds_raised) 
--- were not immune to total shutdowns, highlighting the severity of the 
--- market shift during this period.
+-- Insight:
+-- Some companies that raised substantial funding still laid off 100% of employees,
+-- suggesting that access to capital alone was not enough to prevent collapse.
 
 -- Question 3: Which companies had the highest layoffs?
 
